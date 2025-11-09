@@ -74,3 +74,22 @@ export async function deleteGratitudeEntry(entryId: string): Promise<boolean> {
     return false;
   }
 }
+
+export async function clearAllGratitudeEntries(userId: string = 'default_user'): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('gratitude_entries')
+      .delete()
+      .eq('user_id', userId);
+
+    if (error) {
+      console.error('Error clearing all gratitude entries:', error);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error clearing all gratitude entries:', error);
+    return false;
+  }
+}

@@ -11,6 +11,7 @@ import { SharedThanksViewer } from './components/SharedThanksViewer';
 import type { OnboardingData, TextBoxSize } from './components/onboarding/OnboardingFlow';
 import { getUserPreferences, saveOnboardingPreferences } from './lib/userPreferences';
 import { loadGratitudeEntries, saveGratitudeEntry } from './lib/gratitudeEntries';
+import { clearUserData } from './lib/clearUserData';
 import { motion } from 'motion/react';
 import { Toaster } from './components/ui/sonner';
 
@@ -85,11 +86,19 @@ function App() {
 
   const handleOnboardingComplete = async (data: OnboardingData) => {
     const username = data.username || 'Friend';
+    
+    // Clear all user data (entries, theme cache, etc.) for fresh start
+    await clearUserData('default_user', true);
+    
     const success = await saveOnboardingPreferences(data, username);
 
     if (success) {
       setUserName(username);
       setTextBoxSize(data.textBoxSize || 'medium');
+      // Ensure entries are empty for new user
+      setEntries([]);
+      setHasCompletedEntry(false);
+      setHasCompletedToday(false);
       setCurrentView('dashboard');
     }
   };

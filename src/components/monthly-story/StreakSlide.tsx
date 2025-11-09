@@ -32,7 +32,7 @@ export function StreakSlide({ displayStreak, isCurrentStreak, currentStreak, lon
         transition={{ delay: 0.2 }}
         className="mb-8"
       >
-        <h2 className="text-4xl md:text-5xl text-[#e8d4e8] mb-4 font-bold">
+        <h2 className="text-5xl md:text-6xl text-[#e8d4e8] mb-4 font-bold">
           {isCurrentStreak ? "Current Streak" : "Longest Streak"}
         </h2>
         <p className="text-xl text-[#a8b5d4]">
@@ -57,7 +57,7 @@ export function StreakSlide({ displayStreak, isCurrentStreak, currentStreak, lon
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="text-9xl mb-4"
+            className="text-[10rem] mb-4"
           >
             🔥
           </motion.div>
@@ -92,12 +92,11 @@ export function StreakSlide({ displayStreak, isCurrentStreak, currentStreak, lon
           {getMilestoneMessage(displayStreak)}
         </p>
 
-        <div className="flex justify-center gap-8 mt-6">
+        <div className="flex justify-center gap-16 mt-6">
           <div className="text-center">
             <div className="text-3xl text-[#a8b5d4] font-bold">{currentStreak}</div>
             <div className="text-sm text-[#6b7099] mt-1">Current</div>
           </div>
-          <div className="w-px bg-[#3d4260]" />
           <div className="text-center">
             <div className="text-3xl text-[#d4a5d4] font-bold">{longestStreak}</div>
             <div className="text-sm text-[#6b7099] mt-1">Longest</div>

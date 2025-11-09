@@ -57,8 +57,9 @@ export function OpeningSlide({ monthName }: OpeningSlideProps) {
         className="text-[#6b7099] text-sm"
       >
         <p className="flex items-center justify-center gap-2">
-          <span>Tap or swipe to continue</span>
+          <span>Click</span>
           <span className="text-2xl">→</span>
+          <span>to enter</span>
         </p>
       </motion.div>
 
